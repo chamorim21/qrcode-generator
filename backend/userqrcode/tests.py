@@ -1,6 +1,6 @@
 from rest_framework.test import APITestCase, APIClient
 
-from backend.userqrcode.models import User
+from .models import User
 
 
 class UserQRCodeTestCase(APITestCase):
@@ -66,7 +66,13 @@ class UserQRCodeTestCase(APITestCase):
         self.assertEqual(User.objects.count(), 1)
 
     def test_retrieve_existing_user(self):
-        pass
+        user = User.objects.create(name='Jon Doe', email='user@email.com', about='Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                                   github_url='https://github.com/user', linkedin_url='https://linkedin.com/in/user')
+        response = self.client.get(f'/users/{user.id}/')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data['name'], 'Jon Doe')
+        self.assertEqual(response.data['email'], 'user@email.com')
 
     def test_retrieve_non_existing_user(self):
-        pass
+        response = self.client.get('/users/1/')
+        self.assertEqual(response.status_code, 404)
