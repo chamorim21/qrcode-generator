@@ -1,0 +1,28 @@
+version: "3.7"
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile-frontend
+    command: yarn dev
+    env_file:
+      - ./frontend/.env.local
+    volumes:
+      - ./frontend:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - 3000:3000
+    restart: "no"
+    depends_on: 
+      - backend
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile-backend
+    hostname: buzzvel-api
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./backend:/app
+    ports:
+      - 8000:8000

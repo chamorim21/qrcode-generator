@@ -1,0 +1,11 @@
+FROM python:3.9-alpine
+
+# set working directory
+
+RUN mkdir /app
+WORKDIR /app
+
+RUN apk update && apk add postgresql-dev gcc python3-dev
+COPY . /app
+RUN pip install -r requirements.txt
+EXPOSE 8000
