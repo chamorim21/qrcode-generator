@@ -22,7 +22,7 @@ export default function UserQRCode({
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <div className='max-w-2xl mx-auto p-5 space-y-2 flex flex-col'>
+      <div className='max-w-2xl mx-auto p-5 space-y-2 flex flex-col flex items-center'>
         <Link href='/' className='underline text-xs'>
           Back to homepage
         </Link>
