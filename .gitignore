@@ -41,3 +41,6 @@ next-env.d.ts
 env
 .next
 __pycache__
+
+#database
+db.sqlite3
