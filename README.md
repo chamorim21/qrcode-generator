@@ -5,7 +5,9 @@ Its purpose is be a tool to help customers creating a overview of your informati
 
 ## Getting started
 
-To get started, you'll need to have Docker and Docker Compose installed on your machine. Once you have those installed, simply run the following command:
+To get started, you'll need to set the environment variables in frontend. Following the example given in `frontend/.env.local.example` file, you'll need to create a `.env.local` in the same directory with the required fields.
+
+After that, also, you'll need to have Docker and Docker Compose installed on your machine. Once you have those installed and have the enviroment variables configured, simply run the following command:
 
 ```bash
 docker-compose up
